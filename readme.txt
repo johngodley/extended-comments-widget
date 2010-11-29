@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: johnny5
 Donate link: http://urbangiraffe.com/about/support/
-Tags: ajax, calendar, widget
+Tags: widget, comments
 Requires at least: 2.9
 Tested up to: 3.1
 Stable tag: trunk
