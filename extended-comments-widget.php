@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Extended Comments Widget
-Plugin URI: http://urbangiraffe.com
+Plugin URI: http://urbangiraffe.com/plugins/extended-comments-widget/
 Description: A widget that shows a section of comment text along with the author name. Can exclude certain authors from the list
 Author: John Godley
 Author URI: http://urbangiraffe.com
