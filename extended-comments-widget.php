@@ -14,17 +14,17 @@ class Extended_Comments_Widget extends WP_Widget {
 		$control_ops = array( 'width' => 300, 'height' => 300 );
 
 		$this->WP_Widget( 'extended-comments', __( 'Extended Comments', 'extended-comments' ), $widget_ops, $control_ops );
-		
+
 		if ( is_active_widget( false, false, $this->id_base ) )
 			add_action( 'wp_head', array( &$this, 'style' ) );
 	}
-	
-	function style() { 
+
+	function style() {
 ?>
 	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;} .recentcomments blockquote { padding: 0;}</style>
 <?php
 	}
-	
+
 	/**
 	 * Display the widget
 	 *
@@ -34,13 +34,13 @@ class Extended_Comments_Widget extends WP_Widget {
 	 **/
 	function widget( $args, $instance ) {
 		extract( $args );
-	
+
 		$instance = wp_parse_args( (array)$instance, array( 'title' => __( 'Comments', 'extended-comments' ), 'ignore' => '', 'number' => 5 ) );
 		$title    = apply_filters( 'widget_title', $instance['title'] );
 		$ignore   = stripslashes( $instance['ignore'] );
 
 		echo $before_widget;
-	
+
 		if ( $title )
 			echo $before_title . stripslashes( $title ) . $after_title;
 
@@ -49,7 +49,7 @@ class Extended_Comments_Widget extends WP_Widget {
 		// After
 		echo $after_widget;
 	}
-	
+
 	function recent_comments( $number, $ignore, $words = 12 )	{
 		global $wpdb;
 
@@ -57,10 +57,10 @@ class Extended_Comments_Widget extends WP_Widget {
 			$ignore = "AND user_id NOT IN($ignore)";
 
 		$comments = $wpdb->get_results( $wpdb->prepare( "SELECT comment_author, comment_ID, comment_post_ID, comment_content FROM $wpdb->comments WHERE comment_approved = '1' AND comment_type='' $ignore ORDER BY comment_date_gmt DESC LIMIT %d", $number ) );
-		
+
 		if ( $comments ) {
 			echo '<ul class="recentcomments">';
-			
+
 			foreach ( $comments AS $comment ) {
 ?>
 	<li>
@@ -73,17 +73,17 @@ class Extended_Comments_Widget extends WP_Widget {
 	</li>
 <?php
 			}
-			
+
 			echo '</ul>';
 		}
 	}
-	
+
 	function limit_words( $text, $limit = 10, $characters = 100 ) {
 		$parts = explode( ' ', wp_filter_nohtml_kses( $text ) );
-		
+
 		if ( count( $parts ) > $limit )
 			$text = implode( ' ', array_splice( $parts, 0, $limit ) ).'&hellip;';
-			
+
 		return wp_html_excerpt( stripslashes( $text ), $characters );
 	}
 

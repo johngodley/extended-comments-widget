@@ -3,7 +3,7 @@ Contributors: johnny5
 Donate link: http://urbangiraffe.com/about/support/
 Tags: widget, comments
 Requires at least: 2.9
-Tested up to: 3.2.1
+Tested up to: 4.1
 Stable tag: trunk
 
 A widget that shows a section of comment text along with the author name.
