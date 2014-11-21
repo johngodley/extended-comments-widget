@@ -5,7 +5,7 @@ Plugin URI: http://urbangiraffe.com/plugins/extended-comments-widget/
 Description: A widget that shows a section of comment text along with the author name. Can exclude certain authors from the list
 Author: John Godley
 Author URI: http://urbangiraffe.com
-Version: 0.1
+Version: 0.1.1
 */
 
 class Extended_Comments_Widget extends WP_Widget {
